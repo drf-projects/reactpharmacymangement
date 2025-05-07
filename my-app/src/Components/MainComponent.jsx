@@ -8,6 +8,7 @@ import GoogleFontLoader from "react-google-font-loader";
 import 'adminbsb-materialdesign/css/themes/all-themes.css'
 class MainComponent extends React.Component{
     render(){
+        document.getElementById("root").className="theme-red"
         return (
             <>
             <GoogleFontLoader
