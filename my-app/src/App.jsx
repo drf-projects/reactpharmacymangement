@@ -5,11 +5,11 @@ import MainComponent from './Components/MainComponent';
 
 const App = () => {
   return (
-   <Routes>
-    <Route path="/" element={<Login />} />
-    <Route  path='/home' element={<MainComponent/>}/>
-   </Routes>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path='/home' element={<MainComponent />} />
+    </Routes>
   )
 }
 
-export default App
+export default App;

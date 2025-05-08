@@ -5,9 +5,8 @@ import Navbar from "./Navbar";
 import HomeComponent from "./HomeComponent";
 import SideBar from "./SideBar";
 import GoogleFontLoader from 'react-google-font-loader';
-import "adminbsb-materialdesign/css/themes/all-themes.css";
-
-const MainComponent = () => {
+import "adminbsb-materialdesign/css/themes/all-themes.css"
+const MainComponent2 = () => {
     useEffect(() => {
         window.addEventListener('resize', () => {
             const screenWidth = window.innerWidth;
@@ -18,17 +17,13 @@ const MainComponent = () => {
             }
         })
     })
-   const onBarClick=()=>{
+    onBarClick=()=>{
         const overlay_open = document.querySelector("#root");
-        const overlay_div = document.querySelector(".overlay");
-        overlay_open.classList.toggle("overlay-open");
-        overlay_div.style.display='none';
-        console.log(overlay_open.classList.contains('overlay-open'))
-        if(overlay_open.classList.contains('overlay-open')){
-            overlay_div.style.display='block';
+        overlay_open.classList.add("overlay-open");
+        if(overlay_open.classList.contains("overlay-open")){
+            overlay_open.classList.remove("")
         }
     }
-
     return (
         <>
 
@@ -56,4 +51,4 @@ const MainComponent = () => {
     )
 }
 
-export default MainComponent;
+export default MainComponent2;
