@@ -1,19 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import usericon from 'adminbsb-materialdesign/images/user.png'
 const SideBar = () => {
+    const dropdownRef = useRef(null)
     const arrowRef = useRef(null)
-    const User_Helper_Dropdown = document.querySelector(".user-helper-dropdown");
+
     const showLogoutMenu = () => {
-        User_Helper_Dropdown.classList.add('open')
+        if (dropdownRef.current) {
+            dropdownRef.current.classList.add("open");
+        }
+        console.log('arrowRef', arrowRef)
     }
     const arrowMouseHandler = (event) => {
-        if (event.target === arrowRef.current) {
-            return;
-        } else {
-            User_Helper_Dropdown.classList.remove('open')
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target) &&
+            arrowRef.current &&
+            !arrowRef.current.contains(event.target)
+        ) {
+            dropdownRef.current.classList.remove('open');
         }
-    }
-
+    };
+    useEffect(() => {
+        document.addEventListener('mousedown', arrowMouseHandler)
+        return () => {
+            document.removeEventListener('mousedown', arrowMouseHandler)
+        }
+    }, [])
     return (
         <section>
 
@@ -26,11 +38,10 @@ const SideBar = () => {
                     <div className="info-container">
                         <div className="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
                         <div className="email">john.doe@example.com</div>
-                        <div className="btn-group user-helper-dropdown">
+                        <div className="btn-group user-helper-dropdown" ref={dropdownRef}>
                             <i className="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                                 onClick={showLogoutMenu}
                                 ref={arrowRef}
-                                onMouseDown={arrowMouseHandler}
                             >keyboard_arrow_down</i>
                             <ul className="dropdown-menu pull-right">
                                 <li><a href="#" className=" waves-effect waves-block"><i className="material-icons">input</i>Sign Out</a></li>
